@@ -1,0 +1,69 @@
+##################################################################
+            # Linux Fundamentals # 
+##################################################################
+
+# what is Os?
+ An Operating System (OS) is an intermediate software layer between the hardware of a computer and the software applications or users. It acts as a bridge that enables communication and coordination between programs and physical components like the CPU, memory, and storage.
+The OS is often referred to as the "heart" or "brain" of the computer because it manages all essential operations, including:
+- Process management (running applications)
+- Memory management
+- File system handling
+- Device control
+- Security and user access
+There are multiple types of operating systems, including:
+- 🪟 Windows – widely used on personal computers
+- 🐧 Linux – popular in servers, development, and open-source communities
+- 🍎 macOS – designed by Apple for Mac computers
+- 📱 Android & iOS – for mobile devices
+
+##############################################################################################################
+
+# What is Linux?
+Linux is an operating system—just like Windows or macOS. It helps your computer's hardware and software work together so you can run programs, browse the internet, or save files.
+   Why is Linux special?
+- Free and Open Source: Anyone can use it, change it, and share it.
+- Secure and Stable: It's known for being safe and reliable.
+- Used Everywhere: Powers phones (like Android), servers, smart TVs, and even supercomputers.
+
+#####################################################################################################################
+##############################
+#        Linux System        #
+##############################
+#                            #
+#  ########################  #
+#  #    User Applications  # # ← Apps like browsers, editors
+#  ########################  #
+#  #   System Libraries    # # ← Tools that help apps talk to OS
+#  ########################  #
+#  #      Shell (CLI)      # # ← Command-line interface
+#  ########################  #
+#  #      Linux Kernel     # # ← Core of the OS
+#  ########################  #
+#  #     Hardware Layer    # # ← CPU, RAM, Disk, etc.
+#  ########################  #
+#                            #
+##############################
+# 🧠 What is a Kernel?
+A kernel is the core part of an operating system. It’s like the brain that controls everything inside your computer.
+It helps your software (like apps and games) talk to your hardware (like your CPU, memory, and keyboard).
+
+########################################################################################################################
+
+# Linux Distrubutions?
+
+Linux is open source when it is open source some one creted new distribution with the copy of linux by adding some features and created a new one those are called linux distributions. ex: Ubuntu,fedora,Debian...
+
+    or 
+Linux is an open-source operating system, which means its source code is freely available for anyone to use, modify, and share. Because of this, developers can take the original Linux code, add new features or customize it, and create their own versions. These customized versions are called Linux distributions (or distros).
+
+####################################################################################################################################
+
+# Package Managers.
+
+ A package manager is a tool that helps you install, update, configure, and remove software on your operating system—kind of like an app store
+
+##################################################################################################################################################
+                                                 
+                                                 EPISODE-2 (FOLDER-STRUCTRES)
+##################################################################################################################################################  
+in root level we can see multiple system folders.
