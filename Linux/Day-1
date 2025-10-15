@@ -67,3 +67,381 @@ Linux is an open-source operating system, which means its source code is freely 
                                                  EPISODE-2 (FOLDER-STRUCTRES)
 ##################################################################################################################################################  
 in root level we can see multiple system folders.
+1) Sbin(System binaries)---> these are system binaries which helps you manage your system as adminastrator.
+2) bin(user binary)--> Essential user binaries Basic commands non adminstrative level.
+ <note> sbin & bin & lib are shortcuts to /usr/sbin & /usr /bin
+
+3) lib (libraries)---> As a user we didn't use the libriries>these are used by the linux kernal for making system calls with hardware.
+4) boot--> is used for booting (helps in starting, restart of machine).
+5) srv --> where we can store config files and important files in the server.
+6) opt ---> when we want to install 3rd party dependencies we will install here.
+7) mnt--> when our disk storage is exausted while adding new storage first we mount storage to /mnt folder then they will add disk(volumes) to file system.
+8) var ---> mostly it is used to store log files. in /var/log.
+9) home--> 
+10) data-->
+11) proc --> is virtual folder for process and system informtion not perminent.
+13) tmp --> temporary files will be placed here it will auto clear the data after specfic time.
+14) run--> stores the runtime data within this folder.
+15) etc --> in this we have all of system config files. (settings like mobile) 
+=======================================================================================================================================================================
+Directory	Description
+/sbin -> /usr/sbin	System binaries for administrative commands (linked to /usr/sbin).
+/bin -> /usr/bin	Essential user binaries (linked to /usr/bin).
+/lib -> /usr/lib	Shared libraries and kernel modules (linked to /usr/lib).
+====================================================================================
+Important System Directories
+Directory	Description
+/boot	Stores files needed for booting the system (not relevant in containers).
+/usr	Contains most user-installed applications and libraries.
+/var	Stores logs, caches, and temporary files that change frequently.
+/etc	Stores system configuration files.
+=======================================================================================
+User & Application-Specific Directories
+Directory	Description
+/home	Default location for user home directories.
+/opt	Used for installing optional third-party software.
+/srv	Holds data for services like web servers (rarely used in containers).
+/root	Home directory for the root user.
+=======================================================================================
+Temporary & Volatile Directories
+Directory	Description
+/tmp	Temporary files (cleared on reboot).
+/run	Holds runtime data for processes.
+/proc	Virtual filesystem for process and system information.
+/sys	Virtual filesystem for hardware and kernel information.
+/dev	Contains device files (e.g., /dev/null, /dev/sda).
+=======================================================================================
+Mount Points
+Directory	Description
+/mnt	Temporary mount point for external filesystems.
+/media	Mount point for removable media (USB, CDs).
+/data	Likely your mounted volume from Windows (C:/ubuntu-data).
+=========================================================================================================================================================================
+
+#########################################################################################################################################################################
+                                                 # USER-MANGEMENT#
+#########################################################################################################################################################################
+
+# in org if we provide same root acess to evry one if some one deleted any imp file the server will corrupt. to avoid this we will create users & groups. with some permissons based upon their role.
+
+To create user < useradd name / adduser name> this will crate auser sucessfull tocheck the user < /etc/paswd> their will a entry with username we created.it wiil not create any home directory.
+to create a home directoy along with username <adduser username> . Now it will ask all the details while creating user only alon with password & directory.
+To create password for the user <passwd username> to check the password is created or not </etc/shadow> it will show in encrypted
+can we decrypt the password NO.
+to delete user <userdel username>
+To switch to the user we created <su - username>
+To change password for every 90 days <chage -M 90 username>
+To lock & unlock users <passwd (-l)(-u) username>
+
+===============================================================================================================================================                                                                              GROUPS
+=====================================================================================================================================================
+
+To create a groups <groupadd name> to check weather group is created or not </etc/group>
+After creating username & group name to add the user to the group.
+<usermod -aG groupname username> Now the user add to that group.
+
+========================================================================================================================================================
+To login linux server with ip and username & password. we use <ssh client>
+
+when ever we create a linux sever out of box there is a process running it is sshd. this process allow us to login into server using any laptop and install ssh client using ssh client.
+in gitbash ssh < username@publicip >
+ # when ever we get permession denide public key.
+    #Need to generate key in the local machine using <ssh-keygen>
+    #Now in .ssh folder public & private keys will be genrated now we need to copy public key and need to paste in linux server in .ssh/authorized keys then we can login.
+# when ever we changed any configuration files we need to restart those to apply the changes.
+  <systemctl restart ssh>
+
+#########################################################################################################################################################################
+
+                                                       # FILE-MANAGEMENT #
+
+#########################################################################################################################################################################
+<ls> is used to list the files.
+<ls -ltrh> to list the file files with pemession and data size of the file.
+<ls -ll> to - Shows file type, permissions, number of links, owner, group, size, and modification data
+<ll> will show .files also
+<cd> is used to change directory.
+<cd ..> to comeback one folder back.
+</> is a root directiory.
+<pwd> is used to present current working dir.
+<mkdir> is used to create a new directory. TO ide
+<rmdir (only deletes empty folder)><rm -rf name> is used to delete folder with files.
+<touch/vi/vim file name> is used to create a empty file.
+<cp filename path> to copy a file.
+<mv file name> to rename a file & to move a folder from one path another path.
+<tac filename> to show file from bottom to top.
+<rev filename> to show file in reverse order.
+<less file name> it will opens afile with scrolling support.
+<more file name> simillar to less but it will moves only forwards.
+**#########################################**
+<rm file name> is used to remove fie
+# To create & edit the txt files.
+<touch file name>
+<vi/vim file name>
+in vi vim there 3 modes.
+1) Normal mode  : it's a default mode. used for navigatiion & command execution.
+2) Insert mode  : used for text editing( i to insert )
+3) command mode : used for saving & quitting and searching in a file.
+Basic navigation:
+h: Mover right.
+l: moves to left.
+j: moves to down.
+K: moves to up.
+0 – Move to the beginning of the line
+^ – Move to the first non-blank character of the line
+$ – Move to the end of the line
+w – Move to the next word
+b – Move to the previous word
+gg – Move to the start of the file
+G – Move to the end of the file
+:n – Move to line number n
+
+=================================================================================================================================================================
+
+Insert Mode Shortcuts
+i – Insert before cursor
+I – Insert at the beginning of the line
+a – Append after cursor
+A – Append at the end of the line
+o – Open a new line below
+O – Open a new line above
+Esc – Exit insert mode
+
+=================================================================================================================================================================
+
+
+Editing Text
+x – Delete a character
+X – Delete a character before cursor
+dw – Delete a word
+dd – Delete a line
+d$ – Delete from cursor to end of line
+d0 – Delete from cursor to beginning of line
+D – Delete from cursor to end of line
+u – Undo last action
+Ctrl + r – Redo an undone change
+yy – Copy (yank) a line
+yw – Copy (yank) a word
+p – Paste after the cursor
+P – Paste before the cursor
+
+=================================================================================================================================================================
+
+Search and Replace
+:nl to show text with line numbers.
+:set number to show line numbers in vi editor.
+/pattern – Search forward for a pattern
+?pattern – Search backward for a pattern
+n – Repeat last search forward
+N – Repeat last search backward
+:%s/old/new/g – Replace all occurrences of "old" with "new"
+:s/old/new/g – Replace all occurrences in the current line
+
+=================================================================================================================================================================
+
+Working with Multiple Files
+:e filename – Open a new file
+:w – Save file
+:wq – Save and exit
+:q! – Quit without saving
+:split filename – Split screen horizontally and open another file
+:vsplit filename – Split screen vertically
+Ctrl + w + w – Switch between split screens
+=================================================================================================================================================================
+sed
+grep
+awk
+
+=================================================================================================================================================================
+
+#########################################################################################################################################################################
+                                                          # FILE- PERMESSIONS #
+#########################################################################################################################################################################
+(-rwx -rw- r-) (-rwx -rw- r-)  (-rwx -rw- r-)
+there are sets of permession and groups.
+1) users
+2) group
+3) others
+r=read--> 4
+w= write --> 2
+x= execute -->1
+r+w+x= (4+2+1) 7 all permessions
+r+w+= (4+2) read & write permession
+
+We can user either alphbets or numbers to chnag the permession.
+To change the permession for a file to user group & others <chmod u or g or o = r,w,x> in root level.
+each word represent the permission for a folder or a file.
+if its is directory/folder it will starts with.(drwx-rw-w)
+if its is file it will starts with - (-rwx-rw-w)
+To change owner ship of a file <chown username:username file name> in root level.
+If there is a file inside the folder with having only permsions to files can we acces the file. No to access the file we must have the folder acces to get in.
+
+===================================================================================================================================================================
+                                                                   Abhisheik veramalla notes
+===================================================================================================================================================================
+ile Permissions Management in Linux
+Introduction to File Permissions
+Linux file permissions determine who can read, write, or execute files and directories. Each file and directory has three levels of permission:
+
+Owner (User): The creator of the file.
+Group: Users belonging to the assigned group.
+Others: All other users on the system.
+Permissions are represented as:
+
+Read (r or 4) – View file contents.
+Write (w or 2) – Modify file contents.
+Execute (x or 1) – Run scripts or programs.
+To check file permissions, use:
+
+ls -l filename
+Output example:
+
+-rwxr--r-- 1 user group 1234 Mar 28 10:00 myfile.sh
+Changing Permissions with chmod
+Using Symbolic Mode
+Modify permissions using symbols:
+
+Add (+), remove (-), or set (=) permissions.
+Examples:
+
+chmod u+x filename  # Add execute for user
+chmod g-w filename  # Remove write for group
+chmod o=r filename  # Set read-only for others
+chmod u=rwx,g=rx,o= filename  # Set full access for user, read/execute for group, and no access for others
+Using Numeric (Octal) Mode
+Each permission has a value:
+
+Read (4), Write (2), Execute (1).
+Examples:
+
+chmod 755 filename  # User (rwx), Group (r-x), Others (r-x)
+chmod 644 filename  # User (rw-), Group (r--), Others (r--)
+chmod 700 filename  # User (rwx), No access for others
+Changing Ownership with chown
+Modify file owner and group:
+
+chown newuser filename  # Change owner
+chown newuser:newgroup filename  # Change owner and group
+chown :newgroup filename  # Change only group
+Recursively change ownership:
+
+chown -R newuser:newgroup directory/
+Changing Group Ownership with chgrp
+chgrp newgroup filename  # Change group
+chgrp -R newgroup directory/  # Change group recursively
+Special Permissions
+SetUID (s on user execute bit)
+Allows users to run a file with the file owner's permissions.
+
+chmod u+s filename
+Example: /usr/bin/passwd allows users to change their passwords.
+
+SetGID (s on group execute bit)
+Files: Users run the file with the group's permissions. Directories: Files created inside inherit the group.
+
+chmod g+s filename  # Set on file
+chmod g+s directory/  # Set on directory
+Sticky Bit (t on others execute bit)
+Used on directories to allow only the owner to delete their files.
+
+chmod +t directory/
+Example: /tmp directory.
+
+Default Permissions: umask
+umask defines default permissions for new files and directories. Check current umask:
+
+umask
+Set a new umask:
+
+umask 022  # Default: 755 for directories, 644 for files
+Conclusion
+Understanding file permissions is essential for system security and proper file management. Using chmod, chown, and chgrp, you can control access to files and directories efficiently.
+
+=================================================================================================================================
+#########################################################################################################################################################################
+                                          *PROCESS-MANAGEMENT*--&--*MONITORING*---&--*NETWORKING*--&--*DISK-MANAGEMENT*
+########################################################################################################################################################################
+Process management in Linux refers to the system's ability to create, monitor, control, and terminate processes—which are essentially running programs. Every time you run a command or launch an application, a process is created. Here's a breakdown of how Linux handles them:
+
+🧠 What Is a Process?
+- A process is an instance of a program in execution.
+- Each process has a unique PID (Process ID).
+- Processes can be foreground (interactive) or background (non-interactive).
+PROCESS-MANAGEMENT
+1-view/check        
+2- kill,stop,resume
+3- prior,de-prior.
+
+<ps> to check the running process.
+<ps aux> to check all the running process.
+<ps aux | nl/ set number> to check how the running process with numbers.
+<ps aux | wc -l> to check how the running process with numbers.
+<ps -ef> to check all the running process. 
+**Note** difference between (aux)vs (ef) is in aux we can see memory & cpu utillizaton. in ef we can't see them.
+(<aux><USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND>)
+(<ef><PID TTY      STAT   TIME COMMAND>)
+To kill the process
+<kill &processid>(we can get process id by using ps aux or ef)
+<kill -9 id>it will kill the process and remve the entry.
+<kill -STOP ID> it will temporary stop the process without killing.
+<kill -CONT ID> it will resume the stopped process.
+Change priority of a running process:
+
+<renice -n 10 -p PID  # Lower priority (positive values)>
+<renice -n -5 -p PID  # Higher priority (negative values, root required)>
+
+
+==================================================================================================================================================
+Monitoring
+==================================================================
+<top> isused to check memory cpu utiliztion in real time eversecond in order with high to low.
+<htop> is basically wraper of top with some actual graph with more color format.
+<vmstat/ free -m/ -h> to check the memory.
+<nproc> to check how many cpus are our server is using.
+<df -h> to check disk free space. - Shows how much space is used and available on mounted filesystems
+ 
+<du -sh *>to check the utiliziation of a with folder.Shows how much space is used by files and directories.
+
+==========================================================================================================================================
+                                                       Disk-Management.
+==========================================================================================================================================
+<lsblk>
+<fdisk -l>
+To mount a new storage for a specfic folder.
+1) first we need to attach storage to linux server.
+2) Now if want to mount a specfic directory or to create a folder inside the direstory.
+3) Now to format the storgae we are adding by using to make filesytem <mkfis -t ext4 /dev/xvdf >it will format the data we can see xvdf or somesthing by using <lsblk>
+4) Now we can mount the storage by using mount (/dev/xvdf)<name of the storage we want to mount>  /mnt/demo <place of the folder we want to mount>
+<umount (/dev/xvdf)< name of the storage we want to unmount>  /mnt/demo <place of the folder we want to unmount> >
+🧠 Memory & RAM Command
+free -h                      # Human-readable memory usage
+vmstat                       # System performance: memory, CPU, I/O
+cat /proc/meminfo            # Detailed memory info
+top                          # Real-time process and memory usage
+htop                         # Enhanced top with visual interface
+smem                         # Memory usage per process (PSS)
+ps aux --sort=-%mem          # Processes sorted by memory usage
+watch -n 1 free -m           # Live memory monitor every second
+
+💾 Disk Usage & I/O Command
+df -h                        # Disk space usage of mounted filesystems
+du -sh *                     # Disk usage of files/directories
+lsblk                        # Block devices and mount points
+mount                        # Show mounted filesystems
+umount /dev/sdX              # Unmount a device
+blkid                        # Show UUID and type of block devices
+fdisk -l                     # Partition table of all disks
+iostat                       # CPU and I/O stats (requires sysstat)
+iotop                        # Real-time I/O usage per process
+findmnt                      # Mounted filesystem tree
+ncdu                         # Interactive disk usage viewer
+
+⚙️ CPU Monitoring & Info
+lscpu                        # CPU architecture and core/thread info
+top                          # Real-time CPU usage
+htop                         # Visual CPU usage per process
+mpstat -P ALL                # CPU usage per core (requires sysstat)
+uptime                       # Load averages over 1, 5, 15 minutes
+cat /proc/cpuinfo            # Detailed CPU info
+ps aux --sort=-%cpu          # Processes sorted by CPU usage
+watch -n 1 "grep 'cpu ' /proc/stat"  # Live CPU snapshot

@@ -1,0 +1,37 @@
+####################################################################################################################
+                                          # NETWORKING
+                                          🌐 What Is Networking?
+Networking is the interconnection of devices (like computers, servers, routers, switches) using communication protocols over wired or wireless media to enable data exchange.
+
+🧩 Core Components
+- Nodes: Devices like computers, phones, servers.
+- Links: Physical (Ethernet cables, fiber optics) or wireless (Wi-Fi, Bluetooth).
+- Protocols: Rules for communication (e.g., TCP/IP, HTTP, FTP).
+- Network Devices:
+- Router: Connects different networks, routes traffic.
+- Switch: Connects devices within a network, forwards data intelligently.
+- Firewall: Controls incoming/outgoing traffic based on security rules.
+
+🕸️ Types of Networks
+
+
+####################################################################################################################
+
+NETWORKING
+   --Networking is the process of connecting devices to share data and resources using communication protocols.
+   --in internet data will transfer via packets-(in packets data will be in flags)
+   -- in this we encoded type data.
+   encoded means some number systems
+    - Binary(0,1)
+    -octa (0 t0 7)
+    -hexa (0 to 9)
+    - hexa decimal (0 to 9, a,b,c,d,e,f)
+    why only we use hexdecimal to share the data.
+    because when we use hexa decimal the data will be low
+Protocol--> means its a standardized set of rules and procedures that govern how devices communicate & exchange data across a network.(oka planning & paddathi) set of rules to follw.
+tcp-transimisson control protocal.
+udp- user datagram protocol
+potrs
+
+How data is transfered between countires?
+Via light using optic fibers under deep sea using internet cablrs.
