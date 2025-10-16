@@ -139,6 +139,8 @@ To lock & unlock users <passwd (-l)(-u) username>
 To create a groups <groupadd name> to check weather group is created or not </etc/group>
 After creating username & group name to add the user to the group.
 <usermod -aG groupname username> Now the user add to that group.
+<sudo gpasswd -a username groupname>
+for multiple users <sudo gpasswd -M username1,usernam2..3 groupname>
 
 ========================================================================================================================================================
 To login linux server with ip and username & password. we use <ssh client>
@@ -445,3 +447,40 @@ uptime                       # Load averages over 1, 5, 15 minutes
 cat /proc/cpuinfo            # Detailed CPU info
 ps aux --sort=-%cpu          # Processes sorted by CPU usage
 watch -n 1 "grep 'cpu ' /proc/stat"  # Live CPU snapshot
+===================================================================================
+commands
+shutdown == will shutdown (stop the server)
+nohup.out df <it wii create a log file with df output toc check later>
+which command(java) == Tells you location of installed path.
+sudo apt remove docker.io to uninstall.
+to creata a shortcut for a linux file.
+soft link --> ln -s path filename softlink<if we remove original file shotcut also will be deleted>
+hardlink --> lm path filename hardlink <shortcut will not be deleted if we remove original file>
+diff file1 file2 --> to show the differnce b/w 2 files
+to zip & unzip
+zip <zip -rname the zipfolder exple.zip folder name>ex: zip -r lin.zip /home/ubuntu/linux
+unzip <unzip filename to unzip the files> unzip lin.zip
+or tar 
+tar -cvzf name it.tar.gz filepath <ex tar -cvzf ex.tar.gz /home/ubuntu/ex>
+To copy files from local to server
+<scp -i "/c/Users/maddi/Desktop/AWS/nginx.pem" (local path of pem file) secret.txt(which file to copy source) ubuntu@ec2-3-110-223-95.ap-south-1.compute.amazonaws.com(server connection shh):/home/ubuntu (server path)>
+To copy files from server to local
+ <scp -i "/c/Users/maddi/Desktop/AWS/nginx.pem" (local path for pem) -r (for recursive) ubuntu@ec2-3-110-223-95.ap-south-1.compute.amazonaws.com(to connect with server):/home/ubuntu/linux (source of the files to copy from the server).(. means copy in local given dirctory )>
+<rsync -e ssh "/c/Users/maddi/Desktop/AWS/nginx.pem" (local path for pem) -avz /c/Users/maddi/Desktop/AWS (local path to sync from server) ubuntu@ec2-3-110-223-95.ap-south-1.compute.amazonaws.com(server connection shh):/home/ubuntu (server path in which we want sync files to local) >
+<rsync -e ssh "/c/Users/maddi/Desktop/AWS/nginx.pem" -avz /c/Users/maddi/Desktop/AWS ubuntu@ec2-3-110-223-95.ap-south-1.compute.amazonaws.com:/home/ubuntu >
+=========================================network commands=================================
+<ping domain/ip> used to check we can able to send & receive data or not connection with server & website.
+<netstat/ss to check active connection & ports>
+<ifconfig it will shows how many networks we have connected.>
+<traceroute domain to check how many hops >
+<tracepath to check to check how many hops>
+<mtr to ping and tracepath at a time>
+iwconfig<to check wirlees attachment to the server>
+dig<to check about domain where it is hosted ..>
+whois domain <to check about domain information buy expiry>
+arp <to check mark addres>
+ifplugstatus <to check network infercaes are working or not>
+curl url -X GET  <to call api end points (| jq--to beautify) >
+wget to download from internet.
+watch to check status every 2 sec
+nmap  -v <to scan a domain>
