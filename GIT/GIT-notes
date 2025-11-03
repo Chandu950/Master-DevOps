@@ -1,0 +1,193 @@
+Git--> Maven--->jenkins-->ansible-->Docker--->k8s--->nagios--->terraform-->AWS-->scripting.
+========================================================================================================
+GIT(GLOBAL-information-tracker)
+git is used to track the files.(manam apudu ayna files lo change chestamo adhi evaru chesaro apudu chesaro track avutundi).
+version control system it will maintain multiple versions of a same file.
+it is a paltform independent(edyna oka tool anni os lo work avute danni platform independent anatam)
+free & open source. & handle larger projects.
+it is 3rd generation of vc's came into 2005 devloped using c language.
+==============================================================================================================================
+                         GIT-STAGES
+==============================================================================================================================
+
+GIT has 3 stages.
+1) working directory (indulo manam application or emina devlop chesa code rastam kani track avadu)
+     ⬇️
+    git add( e command execute chesaka mana working directory lo unna files staging area ki veltaii)
+     ⬇️
+2) staging area (ikada ki vachaka manam files ni track cheychu ant evaru em changes chesina manam chudachu)
+     ⬇️
+    git commit( e command execute chesta mana files staging nunchi local repository martuaiii)
+     ⬇️
+3) repository 
+ repository lo kuda mankiki 2 tupes untaii
+ 1) local repository (ante evaru ayte valla code vall machaine rastaro apudu comit chestaro apudu adhi local repo after git commit mana code local repo ki marutindi)
+ 2) remote repository(code raska oka central repository ki push chestaru migilina developers kuda a code acces cheydaniki using git push to store in cemtral repos like github,gitlab...)
+========================================================================================================================================================
+                    GIT - WORKFLOW
+========================================================================================================================================================
+                                            git push origin master      
+                                              ⬇️
+files to commit ->staging area --------> your computer ----> git hub <-------> other github repo
+    ⬇️                ⬇️                  ⬇️                  ⬇️                ⬇️    
+(using git add *)-(git comit - m "text")--(git clone/pull) (remote repository) (fork to add to other github repo)
+
+Your Working Directory
+       ↓
+Files to Commit
+       ↓
+git add .
+       ↓
+Staging Area
+       ↓
+git commit -m "message"
+       ↓
+Local Repository (your computer)
+       ↓
+git push origin master
+       ↓
+Remote Repository (GitHub)
+       ↓
+Fork (optional: to contribute to another GitHub repo)
+       ↓
+Other GitHub Repository
+
+⬅️ git pull origin master (to sync changes from GitHub to your local repo)
+⬇️ git clone <repo-url> (to copy a remote repo to your computer)
+============================================================================================================================================================
+To install git <sudo apt install git -y>
+manam a folder ni ayte track cheyali anukuntamo dantlo manam git initilize cheyali
+<git init> manaki oka .git file(hidden folder) ani create avutindi (.git la maniki configure files untaii)
+<git add . /*/file name> i command execute chesta working directory nunchi staging area ki veltundi (ikada manam files ni track cheyachu . isthe hidden files kuda track avutaii).
+    (. hidden files)
+    (* normal files)
+<git commit -m "message for changes" file name(aws) / .> e command valla staging area lo emina changes chesina telsukovachu (will see history of a file)& mana files ni local repo ki add chestunam. <. iste anni files veltaii folder lo unavi>
+<git status> i command valla mana files vi status chudachu avi aa area lo unai ani 
+ (<green ante staging / red ante(working dirctory)>)
+<git log > e command tho manam commit chesina history chudachu.
+ex: (commit 1157fe37fba4fc948d416f06f8d66f6678dbb08a -->(commit id)
+Author: root(user name) <root@ip-172-31-1-184.ap-south-1.compute.internal (working email)>
+Date:   Sun Oct 26 14:24:21 2025 +0000(time & date of coomit))
+(    file has modified "message we will put while commit")
+<git log --oneline> dinitho manam startt 4 letters of commit id & msg matrame chustam.
+<git log --pretty=oneline> dinitho manam  full commit id & msg matrame chustam.
+<git log -1> manaki eni last commits chudali ante antha number pedatam
+<git log --follow --all (file-name)> to check all the commits we done for a specfic file.
+
+<git show 1157fe37fba4fc948d416f06f8d66f6678dbb08a(commit id) --name-only > i command execute cheste a commit lo a file chge ayndo chudachu.(<git show 1157fe37fba4fc948d416f06f8d66f6678dbb08a only coomit id iste a files lo em changes ayayo kuda chudachu>)
+=========================================================================================================================================================================
+#!/bin/bash
+
+# 🏁 Step 1: Git repository initialize cheyyadam
+git init
+
+# 📁 Step 2: Sample file create cheyyadam
+echo "This is a test file for Git workflow." > aws.txt
+
+# 📥 Step 3: File ni staging area ki add cheyyadam
+git add aws.txt
+
+# 📝 Step 4: Commit cheyyadam with message
+git commit -m "Initial commit for aws.txt"
+
+# 📊 Step 5: Status chudadam (green = staged, red = working dir)
+echo "🔍 Git Status:"
+git status
+
+# 📜 Step 6: Commit history chudadam
+echo "📜 Git Log:"
+git log --oneline
+
+# 🔍 Step 7: Last commit ID ni capture cheyyadam
+COMMIT_ID=$(git log -1 --pretty=format:"%H")
+
+# 📂 Step 8: A commit lo yemi files change ayayo chudadam
+echo "📂 Files changed in commit $COMMIT_ID:"
+git show "$COMMIT_ID" --name-only
+=========================================================================================================================================================================
+ to untrack from staging 
+ to move files from staging area to working directory. oka sari working diectory nunchi staging ki marchamo malli vatini stagging nunchi working directory ki marustunam
+  <use "git restore --staged <file>..." to unstage 
+  <use "git rm --cached <file>..." to unstage >
+ ( manam staging loki add ava kudadu anukuntam avi track avakudadu anukuna files ni manam .gitignore ani file open chesi evi ayte track avakudadu anukana file name indulo place chestam apudu avi manaki track avavau if alred track avutunai ante indulo place chesta work avadu.
+  vi .gitignore ...> place the file names then they will be ignored & untracked )
+  
+  TO SET USER NAME & USER EMAIL
+  <git config user.name "name">
+ <git config user.email "email">
+
+ can we change commit message & author?
+ yes but lattest one only using ammend. here commit id will also change no need to give file
+ <git commit --amend -m "message"> for message.
+  <git commit --amend --author " author < email> " > for users and email.
+  <The command (git commit --amend --no-edit) is used to modify the most recent commit without changing its commit message .
+  - --amend: Updates the last commit with new changes from the staging area.
+- --no-edit: Keeps the original commit message unchanged.> 38 mints
+=========================================================================================================================================================================
+to move back files from local repo to staging area.
+<git reset --hard HEAD~1(number represents number of commits to delete)> it will delete commit along with data we changed during the commit.
+<git reset --soft HEAD~1(number represents number of commits to delete)> it will delete only commit history .
+<git update-ref -d HEAD> to delete all the commits
+<git revert (7f58e4c9af777e1419babd974e03f9f5fe2a227d)(coomit id)> to delete specfic commits only actions will be deleted comit will remain.
+<girt reflog> to check deleted commands.
+can we get back deleted commits yes
+<git cherry-pick (commit-id of deleted one)> 
+================================================================================================
+Branches:
+manaki by deafult ga master ani branch untadi.
+
+- main branch ante trunk.
+- Meeru kotha feature add cheyyali, leka bug fix cheyyali ante, trunk nunchi oka branch create chestaru.
+- Idi main code ni disturb cheyyakunda separate ga pani cheyyadaniki upayogisthundi
+
+🛠 Branch enduku vadali?
+- Safe ga test cheyyadam – main code disturb kakunda.
+- Team lo andariki separate pani – prati developer tana branch lo pani cheyyachu.
+- Organized workflow – features, fixes, releases ni separate ga manage cheyyachu
+
+<git branch> to check current branch.
+<git branch name> to create a new branch.
+<git checkout/switch name> to switch from one branch to another branch.
+<git merge (branch name)> to merge a branch with current working branch.
+<git checkout -b (branch name)> to crate a new branch & siwitch to that branch at a time.
+<git branch -d (branch name)> to delete a branch 
+Note: 
+     we can't delete a branch if we are in that branch.
+     we can't able to delete a branch with out merging to master if we commit in that branch. But using one command we can.
+<git branch -D (branch name)> to delete a branch without merging.
+<git branch -m (old-name) (new-name)> to change a branch name.
+=============================================================================================
+MERGE CONFLICTS.
+merge confict ela vastundi ante manki 2 developers oka code meda 2 different branches meda work chestunaru. after completeg the code they tried to merge they will found an error like merge conflict.
+
+eX: oka devloper1 oka branch code rasi commit chesadu oka branch lo. inko devloper2 vachi inko branch lo code ras commit chesadu. ipudu malli devloper 1 malli code rasi commit chesaru ipudu manam devloper 1 or devloper 2 rasina code merge chesinapudu conflict vastundi enduku ante avi lines different branches lo different data vundi merge chesinapu issue kinda vastundi.
+<git merge devlop>
+dini resolve cheydam ela ante a file loki velta <vi file name open chesta>
+<<<<<<<< HEAD
+Hello from main branch
+=======
+Hello from feature branch
+>>>>>>> feature>
+manam insert mode loki velli correct ga maniki a code correct ga kavalo a lines unchi migilanvi delte chesi save chestam.
+apudu merge conflict resolve avutadi. danni malli working area to staging & commit cheyali.
+<git add file name
+git commit -m "Resolved merge conflict">
+
+Now if we want to merge a single commits to master branch from develop branch.
+<git cherry-pick (specfic commit-id)>
+====================================================================================================================================
+STASHSH
+ oka branch manam staging area lo oka file lo data ni add chesaka adhi commit cheyakunda alage a data delete avakunda vere branch ki velladam kosam.
+<git stash> is used to delete files temporarly.
+<git stash apply> to retrive the temporary deleted files.
+to check hw many stash we done.
+<git stash list> to list all the stash files.
+<git stash drop (stash id)> to drop one stash.
+<git stash clear> to delete all the stash files.
+========================================================================================================================================================================
+                                                       GIT-HUB
+===================================================================================================================================================================
+repositories: 
+ public: any body can veiw the code.
+ private: only  the people who will have access can veiw the code.
+ 
