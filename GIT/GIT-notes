@@ -9,7 +9,11 @@ it is 3rd generation of vc's came into 2005 devloped using c language.
 ==============================================================================================================================
                          GIT-STAGES
 ==============================================================================================================================
-
+<- Merge: Combines branches by creating a merge commit, preserving full history.
+- Rebase: Replays commits onto another branch, rewriting history for a clean, linear timeline.
+👉 One‑liner:
+“Merge preserves history with a merge commit, while Rebase rewrites history for a cleaner timeline.”
+>
 GIT has 3 stages.
 1) working directory (indulo manam application or emina devlop chesa code rastam kani track avadu)
      ⬇️
