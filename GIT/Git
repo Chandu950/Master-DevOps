@@ -1,0 +1,27 @@
+GIT:
+
+first we need to create a directory <mkdir>
+now we need to initlize git using <git init>
+now .git hidden file will be created.
+Then we need add remote repository using <git add remote origin url >
+Now to create file we use <vi filename>
+Now to add the file to staging area using <git add .>
+Now to add the file to local repo using <git commit -m "message" filename>
+Now to create a new branch we use <git branch name>
+Now to switch to the new branch we use <git checkout branch name >
+Now to list the branches we use <git branch>
+Now to push the branch we use <git push origin (branch-name)>
+Now to clone the remote repository we use <git clone url>
+**** we cannot create a new branch without a single commit in a main branch.
+once we commited a file in master branch and created a new dev branch then we can able to see the file which we commited because we created a new branch after commiting due to that we can able to see tha file in new branch.
+
+*****
+To create a merge conflict first we need create a file and need to commit and then need to create a dev branch from the created file branch and edit it and commit and then comes to main branch and edit it again now try to merge to  dev to master a then conflict will raise.
+********
+
+TO create a compare and pull request
+
+we wiil create a branch from master branch and add a file then push it then compare and pull request will be created.
+
+***********************
+if we want to delete the remote repository if you are having entire code the delte code in local and git add . git commit git pull origin -u then you entire code will be deleted
