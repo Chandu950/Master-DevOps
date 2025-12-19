@@ -3,20 +3,66 @@ GIT:
 first we need to create a directory <mkdir>
 now we need to initlize git using <git init>
 now .git hidden file will be created.
-Then we need add remote repository using <git add remote origin url >
+Then we need add remote repository using <git add remote origin URL >
 Now to create file we use <vi filename>
 Now to add the file to staging area using <git add .>
+to check the config details like user name email <git config --list>
+To add the user mail and and user name <git config user.email/user.name "mail@mail.com"/ "name"> -- for current repo only
+<git config --global user. user.email/user.name "mail@mail.com"/ "name"> -- for all repos
+To untrack the working area files we place those file in <.gitignore>
+
 Now to add the file to local repo using <git commit -m "message" filename>
+Now to undo changes after commiting while preserving history (ante manam commit chesina taravata a commit lo vunna changes povali anukunte kani commit history alane untadi)
+<git revert commit id<commit1id commitid2(for multiple commit)>/ HEAD~number>
+git reset moves the current branch pointer (HEAD) to a specified commit and optionally updates the staging area and working directory. It’s a powerful command for undoing changes, but unlike git revert, it can rewrite history.(Ante current commit nunchi vere commit ante previous commits ki tisuku veltundi and apudu aaa commit nunch ayte manam previous commit ki veltamo a madylao una commit history and commit ayna files ni delete chestundi adhi kuda manam vade command buti vuntadi soft ani iste file staging ki veltaii hard ani iste delete avutaii mixed ani iste working directory ki veltundi )
+<git reset --soft <commit id> --hard/ --mixed>
+mixed working directory
+soft move files to staging
+hard removes the file till the commit
+
+ What is a Branch in Git?
+- A branch is simply a pointer to a commit in Git’s history.
+- It represents an independent line of development.
+
 Now to create a new branch we use <git branch name>
 Now to switch to the new branch we use <git checkout branch name >
-Now to list the branches we use <git branch>
+Now to list the branches in local we use <git branch>
+Now to list the branches in remote we use <git branch -r>
+Now to list the all branches local & remote we use <git branch -a>
 Now to push the branch we use <git push origin (branch-name)>
-Now to clone the remote repository we use <git clone url>
-**** we cannot create a new branch without a single commit in a main branch.
-once we commited a file in master branch and created a new dev branch then we can able to see the file which we commited because we created a new branch after commiting due to that we can able to see tha file in new branch.
+Now to clone the remote repository we use <git clone URL>
+When we clone a Git repository, the remote automatically set as origin in our local repo
 
-*****
+
+Now add the repository to local we use <git remote add origin URL>
+Now to add a new repository for the local we use <git remote set-url origin (url)https://github.com/Chandu950/merge.git>
+**** we cannot create a new branch without a single commit in a main branch.
+once we committed a file in master branch and created a new dev branch then we can able to see the file which we committed because we created a new branch after committing due to that we can able to see the file in new branch.
+
+<git diff> is used to show the difference between the committed files and changes made after commitng to the file. only green files
+<git diff HEAD> is used for to show the difference between commited and uncommited files. both green and red files
+<git dif --staged> to show the
+<git diff branch1..branch2> to check difference between 2 branches for same to commits <git diff commit1..commit2>
+
+*********************
+to modify the commit message
+git commit --amend -m "Add incomplete frogs-and-ox story"
+****************
+to push the code in to repo
+<git push -u origin branchname (-u ante upstream manam oka sare -u ichaka git push ani iste -u ichinapudu a branch ayte vademo a branch push aipotundi branch ivakaledu anamata )>
+git log
+
+To check the git logs
+
+git logs
+git logs -3 to check last 3 commits
+git logs --name-only to check the commits with files which are committed.
+git log --graph --decorate to check which branch is created from which branch.
+
+***** MERGE
 To create a merge conflict first we need create a file and need to commit and then need to create a dev branch from the created file branch and edit it and commit and then comes to main branch and edit it again now try to merge to  dev to master a then conflict will raise.
+
+if we merge to branches then comits also merged to the branch we are committing
 ********
 
 TO create a compare and pull request
@@ -24,4 +70,27 @@ TO create a compare and pull request
 we wiil create a branch from master branch and add a file then push it then compare and pull request will be created.
 
 ***********************
-if we want to delete the remote repository if you are having entire code the delte code in local and git add . git commit git pull origin -u then you entire code will be deleted
+if we want to delete the remote repository if you are having entire code the delete code in local and git add . git commit git pull origin -u then you entire code will be deleted
+*************
+GIT REBASE
+
+we have committed in a master branch and created a new branch and added a files and committed and comes to master and added new files and committed it now we want the branch we committed before committing into master
+
+**********************************************
+
+git stash
+
+git stash is a Git command that lets you temporarily save your uncommitted changes (both staged and unstaged) without committing them, so you can switch branches, pull updates, or work on something else, and later reapply those changes.
+
+when we done multiple git stash for different files when we want those file back we will apply <git stash apply> it will retrive the latest stashed file only and it will not delete the stash entry
+if we want a specific stashed file need apply <git stash apply stash@{3}>
+if we want delete the stash entry after retriving use git stash drop stash@{3}>
+if we want to retrive and delete at the same time we use <git stash pop>
+
+*********
+cherry-pick
+
+it is used to apply specific commit from one branch to combine in another branch
+<git cherry-pick commit id (-e(to modify commit message) (-n )e flag ni use chesta a branch lo staging area ki vastai commit avakunda) >
+*****************
+A fork in Git creates a personal copy of someone else’s repository under your own account. It includes all files, commit history, and branches from the original repo, but is independent — you can make changes freely without affecting the source project.
